@@ -56,6 +56,7 @@ router.post('/create', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
+	console.log(req.body);
 	let username = req.body.username;
 	let password = req.body.password;
 	if(!username || !password) {

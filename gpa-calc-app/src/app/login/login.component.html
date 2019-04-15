@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <form [formGroup]="newLoginForm">
+    <div *ngIf="errMsg">
+      <p>Invalid Username/Password. Please Try Again</p>
+    </div>
+
+    <div>
+      <label><strong>Username</strong></label>
+      <br />
+      <input
+        type="text"
+        formControlName="username"
+        class="form-control"
+        required
+      />
+    </div>
+    <div>
+      <label><strong>Password</strong></label>
+      <br />
+      <input
+        type="text"
+        formControlName="password"
+        class="form-control"
+        required
+      />
+    </div>
+    <button class="btn btn-primary" (click)="onLogin()">Login</button>
+  </form>
+</div>

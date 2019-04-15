@@ -1,9 +1,17 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 
-import { calculatorComponent } from "./calculatorComponent/calculatorComponent.component";
+// Pages
+import { LoginComponent } from "./login/login.component";
+import { HomeComponent } from "./home/home.component";
+import { CalculatorPageComponent } from "./calculator-page/calculator-page.component";
 
-const routes: Routes = [{ path: "", component: calculatorComponent }];
+// Routing
+const routes: Routes = [
+  { path: "", component: HomeComponent, pathMatch: "full" },
+  { path: "login", component: LoginComponent },
+  { path: "calc", component: CalculatorPageComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

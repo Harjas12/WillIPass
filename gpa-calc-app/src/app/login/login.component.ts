@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 import { AuthHandlerService } from "../auth-handler.service";
+import { ErrMsgService } from "../err-msg.service";
 
 @Component({
   selector: "app-login",
@@ -9,12 +10,12 @@ import { AuthHandlerService } from "../auth-handler.service";
 })
 export class LoginComponent implements OnInit {
   newLoginForm: FormGroup;
-  username: string = "";
-  password: string = "";
+  errMsg = false;
 
   constructor(
     private fb: FormBuilder,
-    private loginService: AuthHandlerService
+    private loginService: AuthHandlerService,
+    private errHandler: ErrMsgService
   ) {
     this.newLoginForm = this.fb.group({
       username: ["", Validators.required],
@@ -23,13 +24,10 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-    // this.username = this.newLoginForm.get("username").value;
-    // this.password = this.newLoginForm.get("password").value;
-    // this.loginService.login(this.username, this.loginService);
-    let formObj = this.newLoginForm.getRawValue();
-    let serializedForm = JSON.stringify(formObj);
-    console.log(serializedForm);
+    const formObj = this.newLoginForm.getRawValue();
+    const serializedForm = JSON.stringify(formObj);
     this.loginService.login(serializedForm);
+    this.errMsg = this.errHandler.getLoginStatus();
   }
 
   ngOnInit() {}

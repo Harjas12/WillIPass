@@ -1,12 +1,18 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { HttpHeaders } from "@angular/common/http";
+import { Router } from "@angular/router";
+import { ErrMsgService } from "./err-msg.service";
 
 @Injectable({
   providedIn: "root"
 })
 export class AuthHandlerService {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private errMsg: ErrMsgService
+  ) {}
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -23,11 +29,20 @@ export class AuthHandlerService {
       )
       .subscribe(
         data => {
+          //set local cookie
           console.log("success", data);
-          // localStorage.setItem("id_token", res.token);
+          let obj = JSON.stringify(data);
+          localStorage.setItem("sessionInfo", obj);
+
+          //Change page
+          this.router.navigate(["/calc"]);
+          this.errMsg.setLoginStatus(false);
         },
         err => {
           console.log("error", err);
+
+          //Display Error Message
+          this.errMsg.setLoginStatus(true);
         }
       );
   }

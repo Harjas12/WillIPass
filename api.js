@@ -16,7 +16,6 @@ const dbConn = new pg.Pool({
 
 function checkAuth(req, res, next) {
 	let token = req.headers['authorization'];
-	console.log(req.headers);
 	if(!token) {
 		res.status(401).send({ auth: false, message: 'No token provided.' });
 		return;
@@ -32,8 +31,29 @@ function checkAuth(req, res, next) {
 	}
 }
 
-router.get('/test', checkAuth, (req, res) => {
-	res.send("HELLO");
+router.get('/grades', checkAuth, async (req, res) => {
+	let id = req.user_id;
+	try {
+		let results = await dbConn.query("SELECT classes FROM account WHERE user_id = $1", [id]);
+		res.send(results.rows);
+	} catch(error) {
+		res.sendStatus(400);
+	}
+});
+
+router.post('/grades', checkAuth, async (req, res) => {
+	let id = req.user_id;
+	let grades = req.body.grades;
+	if(!grades) {
+		res.sendStatus(400);
+		return;
+	}
+	try {
+		await dbConn.query("UPDATE account SET classes = $1 WHERE user_id = $2", [grades, id]);
+		res.sendStatus(200);
+	} catch(error) {
+		res.sendStatus(500);
+	}
 });
 
 router.post('/create', async (req, res) => {
@@ -50,14 +70,11 @@ router.post('/create', async (req, res) => {
 		[username, hash, salt]);
 		res.sendStatus(201);
 	} catch(error) {
-		console.log(error);
 		res.sendStatus(400);
 	}
 });
 
 router.post('/login', async (req, res) => {
-	console.log(req.body);
-	console.log(req.headers);
 	let username = req.body.username;
 	let password = req.body.password;
 	if(!username || !password) {

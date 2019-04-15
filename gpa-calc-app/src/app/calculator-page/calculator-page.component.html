@@ -1,3 +1,64 @@
-<p>
-  calculator-page works!
-</p>
+<div id="calc">
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Credit Hours</th>
+        <th>GPA (4.0 scale)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let class of classesArray; let i = index">
+        <td>
+          <input
+            [(ngModel)]="class.code"
+            class="form-control"
+            type="text"
+            name="{{ class.creditHr }}"
+          />
+        </td>
+        <td>
+          <input
+            [(ngModel)]="class.name"
+            class="form-control"
+            type="text"
+            name="{{ class.grade }}"
+          />
+        </td>
+        <td>
+          <button
+            class="btn btn-default"
+            type="button"
+            (click)="deleteClass(i)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input
+            class="form-control"
+            type="text"
+            id="newClassCreditHr"
+            [(ngModel)]="newClass.creditHr"
+            name="newClassCreditHr"
+          />
+        </td>
+        <td>
+          <input
+            class="form-control"
+            type="text"
+            id="newClassGrade"
+            [(ngModel)]="newClass.grade"
+            name="newClassGrade"
+          />
+        </td>
+        <td>
+          <button class="btn btn-default" type="button" (click)="addNewClass()">
+            Add
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

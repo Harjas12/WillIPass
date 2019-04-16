@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { AuthHandlerService } from "../auth-handler.service";
 import { Router } from "@angular/router";
-
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: "root"
@@ -36,7 +36,9 @@ export class GradeHandlerService {
 
   getGrades() {
     const req = this.http
-      .get("https://willipass.herokuapp.com/api/grades", {headers: this.gradeHeader});
+      .get("https://willipass.herokuapp.com/api/grades", {headers: this.gradeHeader}).pipe(
+        map(res => res["classes"])
+      );
     return req;
   }
 }

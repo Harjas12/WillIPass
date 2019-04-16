@@ -43,14 +43,11 @@ export class AuthHandlerService {
     .subscribe(
       data => {
         console.log("success", data);
-        let obj = JSON.stringify(data);
-        let jwtVal = JSON.parse(obj).token;
-        localStorage.setItem("token", jwtVal);
         this.router.navigate(["/login"])
       },
       err => {
         console.log("error", err);
-        alert("");
+        alert("Username is already taken, please try again.");
       }
     );
   }

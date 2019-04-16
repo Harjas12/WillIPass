@@ -59,8 +59,9 @@ router.post('/grades', checkAuth, async (req, res) => {
 router.post('/create', async (req, res) => {
 	let username = req.body.username;
 	let password = req.body.password;
-	let firstName = req.body.firsname;
+	let firstName = req.body.firstname;
 	let lastName = req.body.lastname;
+	console.log(req.body);
 	if(!username || !password || !firstName || !lastName) {
 		res.sendStatus(400);
 		return;
@@ -69,7 +70,7 @@ router.post('/create', async (req, res) => {
 	let hash = await encrypter.hash(password, salt);
 	try {
 		let results = await dbConn.query("INSERT INTO account (username, password, salt, firstname, lastname) VALUES ($1, $2, $3, $4, $5)",
-		[username, hash, salt, firstName, lastname]);
+		[username, hash, salt, firstName, lastName]);
 		res.sendStatus(201);
 	} catch(error) {
 		res.sendStatus(400);

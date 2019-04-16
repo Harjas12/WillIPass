@@ -90,9 +90,7 @@ export class CalculatorPageComponent implements OnInit {
   }
 
   getGrades() {
-    const data = JSON.stringify({
-      grades: this.classesArray
-    });
+    const data = this.grader.getGrades();
     console.log(data);
   }
 }

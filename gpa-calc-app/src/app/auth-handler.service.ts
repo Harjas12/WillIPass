@@ -31,7 +31,8 @@ export class AuthHandlerService {
           //set local cookie
           console.log("success", data);
           let obj = JSON.stringify(data);
-          localStorage.setItem("sessionInfo", obj);
+          let jwtVal = JSON.parse(obj).token;
+          localStorage.setItem("token", jwtVal);
 
           //Change page
           this.router.navigate(["/calc"]);
@@ -43,7 +44,7 @@ export class AuthHandlerService {
   }
 
   authToken() {
-    let data = JSON.parse(localStorage.getItem("sessionInfo"));
+    let data = JSON.parse(localStorage.getItem("token"));
     if (data === null) {
       return null;
     }

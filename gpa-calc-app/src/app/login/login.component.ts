@@ -30,8 +30,8 @@ export class LoginComponent implements OnInit {
     console.log(serializedForm);
 
     // Give browser time to set token
+    this.errHandler.setLoginStatus();
     setTimeout(() => {
-      this.errHandler.setLoginStatus();
       this.errMsg = this.errHandler.getLoginStatus();
     }, 2000);
   }

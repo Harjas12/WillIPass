@@ -13,7 +13,7 @@ export class ErrMsgService {
   }
 
   setLoginStatus() {
-    if (localStorage.getItem("sessionInfo") !== null) {
+    if (localStorage.getItem("token") !== null) {
       this.loginStatus = true;
     } else {
       this.loginStatus = false;

@@ -15,8 +15,11 @@ export class GradeHandlerService {
     private auth: AuthHandlerService
   ) {
     this.gradeHeader.append("Content-Type", "application/json");
-    this.gradeHeader.append("authorization", JSON.stringify(this.auth.authToken()));
-    console.log(this.auth.authToken());
+    this.gradeHeader.append(
+      "authorization",
+      "bearer " + localStorage.getItem("token")
+    );
+    console.log(localStorage.getItem("token"));
   }
 
   httpOptions = {
@@ -30,6 +33,19 @@ export class GradeHandlerService {
         input,
         this.httpOptions
       )
+      .subscribe(
+        data => {
+          console.log("success", data);
+        },
+        err => {
+          console.log("error", err);
+        }
+      );
+  }
+
+  getGrades() {
+    const req = this.http
+      .get("https://willipass.herokuapp.com/api/grades", this.httpOptions)
       .subscribe(
         data => {
           console.log("success", data);

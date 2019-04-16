@@ -15,7 +15,6 @@ export class CalculatorPageComponent implements OnInit {
   newClassGrade: string;
   newClassName: string;
   newClassCredits: number;
-  gpa: number;
 
   constructor(
     private errHandler: ErrMsgService,
@@ -34,7 +33,6 @@ export class CalculatorPageComponent implements OnInit {
     this.newClassGrade = "A";
     this.newClassName = "";
     this.newClassCredits = 3;
-    this.gpa = 4.0;
   }
 
   addNewClass() {
@@ -48,23 +46,25 @@ export class CalculatorPageComponent implements OnInit {
     this.newClassGrade = "A";
     this.newClassName = "";
     this.newClassCredits = 3;
-    this.recomputeGPA();
   }
 
   deleteClass(index) {
     this.classesArray.splice(index, 1);
-    this.recomputeGPA();
   }
 
-  recomputeGPA() {
+  computeGPA(grades) {
     let totalQualityPoints = 0;
     let totalQualityPointsEarned = 0;
-    for (let i = 0; i < this.classesArray.length; i++) {
-      const weight = this.getGradeWeight(this.classesArray[i].grade);
-      totalQualityPoints += 4.0 * this.classesArray[i].credits;
-      totalQualityPointsEarned += weight * this.classesArray[i].credits;
+    for (let i = 0; i < grades.length; i++) {
+      const weight = this.getGradeWeight(grades[i].grade);
+      totalQualityPoints += 4.0 * grades[i].credits;
+      totalQualityPointsEarned += weight * grades[i].credits;
     }
-    this.gpa = 4.0 * (totalQualityPointsEarned / totalQualityPoints);
+    if(totalQualityPoints != 0) {
+      return 4.0 * (totalQualityPointsEarned / totalQualityPoints);
+    } else {
+      return 4.0;
+    }
   }
 
   getGradeWeight(grade: string) {

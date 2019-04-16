@@ -35,18 +35,14 @@ export class AuthHandlerService {
 
           //Change page
           this.router.navigate(["/calc"]);
-          // this.errMsg.setLoginStatus(false);
         },
         err => {
           console.log("error", err);
-
-          //Display Error Message
-          // this.errMsg.setLoginStatus(true);
         }
       );
   }
 
-  get authToken() {
+  authToken() {
     let data = JSON.parse(localStorage.getItem("sessionInfo"));
     if (data === null) {
       return null;

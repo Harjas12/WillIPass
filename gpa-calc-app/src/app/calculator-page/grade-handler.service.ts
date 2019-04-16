@@ -7,17 +7,20 @@ import { Router } from "@angular/router";
   providedIn: "root"
 })
 export class GradeHandlerService {
+  gradeHeader = new HttpHeaders();
+
   constructor(
     private http: HttpClient,
     private router: Router,
     private auth: AuthHandlerService
-  ) {}
+  ) {
+    this.gradeHeader.append("Content-Type", "application/json");
+    this.gradeHeader.append("authorization", JSON.stringify(this.auth.authToken()));
+    console.log(this.auth.authToken());
+  }
 
   httpOptions = {
-    headers: new HttpHeaders({
-      "Content-Type": "application/json",
-      token: this.auth.authToken
-    })
+    headers: this.gradeHeader
   };
 
   sendGrades(input) {

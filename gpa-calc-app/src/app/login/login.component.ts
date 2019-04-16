@@ -29,8 +29,11 @@ export class LoginComponent implements OnInit {
     this.loginService.login(serializedForm);
     console.log(serializedForm);
 
-    this.errHandler.setLoginStatus();
-    this.errMsg = this.errHandler.getLoginStatus();
+    // Give browser time to set token
+    setTimeout(() => {
+      this.errHandler.setLoginStatus();
+      this.errMsg = this.errHandler.getLoginStatus();
+    }, 2000);
   }
 
   ngOnInit() {}

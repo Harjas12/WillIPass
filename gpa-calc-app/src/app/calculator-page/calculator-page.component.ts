@@ -9,7 +9,6 @@ import { GradeHandlerService } from "./grade-handler.service";
   styleUrls: ["./calculator-page.component.css"]
 })
 export class CalculatorPageComponent implements OnInit {
-  isLoggedin = this.errHandler.getLoginStatus();
   classesArray: Array<any> = [];
   newClassGrade: string;
   newClassName: string;
@@ -85,6 +84,14 @@ export class CalculatorPageComponent implements OnInit {
     const classes = JSON.stringify(this.classesArray);
     const data = JSON.stringify({
       grades: classes
+    });
+    console.log(data);
+    this.grader.sendGrades(data);
+  }
+
+  getGrades() {
+    const data = JSON.stringify({
+      grades: this.classesArray
     });
     console.log(data);
   }

@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Router } from "@angular/router";
-import { ErrMsgService } from "./err-msg.service";
 
 @Injectable({
   providedIn: "root"
@@ -10,7 +9,6 @@ export class AuthHandlerService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private errMsg: ErrMsgService
   ) {}
 
   httpOptions = {
@@ -22,7 +20,7 @@ export class AuthHandlerService {
   login(input) {
     const req = this.http
       .post(
-        "https://willipass.herokuapp.com/api/login",
+        "http://willipass.herokuapp.com/api/login",
         input,
         this.httpOptions
       )
@@ -50,4 +48,24 @@ export class AuthHandlerService {
     }
     return data.token;
   }
+  
+  create(input) {
+    const req = this.http
+    .post (
+      "http://willipass.herokuapp.com/api/create",
+      input,
+      this.httpOptions
+    )
+    .subscribe(
+      data => {
+        console.log("success", data);
+        this.router.navigate(["/login"])
+      },
+      err => {
+        console.log("error", err);
+        alert("Username is already taken, please try again.");
+      }
+    );
+  }
+
 }

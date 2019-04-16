@@ -95,7 +95,7 @@ router.post('/login', async (req, res) => {
 		let recievedHash = await encrypter.hash(password, authInfo.salt);
 		if(recievedHash == authInfo.password) {
 			let token = jwt.sign({id: authInfo.user_id}, process.env.SECRET);
-			res.send({auth: true, token: token, firstName: authInfo.firsname, lastname: authInfo.lastname});
+			res.send({auth: true, token: token, firstName: authInfo.firstname, lastname: authInfo.lastname});
 		} else {
 			res.sendStatus(401);
 		}

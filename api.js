@@ -15,6 +15,7 @@ const dbConn = new pg.Pool({
 });
 
 function checkAuth(req, res, next) {
+	console.log(req.headers);
 	let token = req.headers['authorization'];
 	if(!token) {
 		res.status(401).send({ auth: false, message: 'No token provided.' });

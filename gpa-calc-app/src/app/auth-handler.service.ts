@@ -48,7 +48,7 @@ export class AuthHandlerService {
     }
     return data.token;
   }
-  
+
   create(input) {
     const req = this.http
     .post (
@@ -66,6 +66,10 @@ export class AuthHandlerService {
         alert("Username is already taken, please try again.");
       }
     );
+  }
+
+  logout(){
+    
   }
 
 }

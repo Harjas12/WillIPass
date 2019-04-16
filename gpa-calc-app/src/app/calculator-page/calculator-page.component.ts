@@ -48,7 +48,6 @@ export class CalculatorPageComponent implements OnInit {
     this.newClassGrade = "A";
     this.newClassName = "";
     this.newClassCredits = 3;
-
   }
 
   deleteClass(index) {
@@ -63,7 +62,7 @@ export class CalculatorPageComponent implements OnInit {
       totalQualityPoints += 4.0 * grades[i].credits;
       totalQualityPointsEarned += weight * grades[i].credits;
     }
-    if(totalQualityPoints != 0) {
+    if (totalQualityPoints != 0) {
       return 4.0 * (totalQualityPointsEarned / totalQualityPoints);
     } else {
       return 4.0;
@@ -120,5 +119,10 @@ export class CalculatorPageComponent implements OnInit {
           this.newClassCredits = 3;
         }
       });
+  }
+
+  logout() {
+    localStorage.removeItem("token");
+    this.route.navigate([""]);
   }
 }

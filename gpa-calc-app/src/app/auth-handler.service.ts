@@ -25,7 +25,7 @@ export class AuthHandlerService {
       .subscribe(
         data => {
           console.log("success", data);
-          localStorage.setItem("id_token", data['token']);
+          localStorage.setItem("id_token", res.token);
         },
         err => {
           console.log("error", err);

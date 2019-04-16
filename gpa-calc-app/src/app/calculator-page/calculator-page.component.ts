@@ -2,8 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ErrMsgService } from "../err-msg.service";
 import { GradeHandlerService } from "./grade-handler.service";
-import { catchError } from 'rxjs/operators';
-
+import { catchError } from "rxjs/operators";
 
 @Component({
   selector: "app-calculator-page",
@@ -35,6 +34,8 @@ export class CalculatorPageComponent implements OnInit {
     this.newClassName = "";
     this.newClassCredits = 3;
     this.gpa = 4.0;
+
+    this.getGrades();
   }
 
   addNewClass() {
@@ -45,9 +46,6 @@ export class CalculatorPageComponent implements OnInit {
       grade: this.newClassGrade,
       credits: this.newClassCredits
     });
-    this.newClassGrade = "A";
-    this.newClassName = "";
-    this.newClassCredits = 3;
     this.recomputeGPA();
   }
 
@@ -57,6 +55,7 @@ export class CalculatorPageComponent implements OnInit {
   }
 
   recomputeGPA() {
+    console.log(this.classesArray);
     let totalQualityPoints = 0;
     let totalQualityPointsEarned = 0;
     for (let i = 0; i < this.classesArray.length; i++) {
@@ -88,22 +87,36 @@ export class CalculatorPageComponent implements OnInit {
       grades: classes
     });
     console.log(data);
-    this.grader.sendGrades(data).pipe(
-      catchError((err, caught) => {
-        alert("save failed");
-        return [];
-      })
-    ).subscribe();
+    this.grader
+      .sendGrades(data)
+      .pipe(
+        catchError((err, caught) => {
+          alert("save failed");
+          return [];
+        })
+      )
+      .subscribe();
   }
 
   getGrades() {
-    this.grader.getGrades().pipe(
-      catchError((err, caught) => {
-        alert("failed to load grades");
-        return [];
-      })
-    ).subscribe(grades => {
-      console.log(grades);
-    });
+    this.grader
+      .getGrades()
+      .pipe(
+        catchError((err, caught) => {
+          alert("failed to load grades");
+          return [];
+        })
+      )
+      .subscribe(grades => {
+        console.log(grades);
+        this.classesArray = grades;
+        if (this.classesArray === null) {
+          this.newClassGrade = "A";
+          this.newClassName = "";
+          this.newClassCredits = 3;
+        } else {
+          this.recomputeGPA();
+        }
+      });
   }
 }

@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <form [formGroup]="newLoginForm">
+    <div>
+      <label>Username</label>
+      <input
+        type="text"
+        formControlName="username"
+        class="form-control"
+        required
+      />
+    </div>
+    <div>
+      <label>Password</label>
+      <input
+        type="text"
+        formControlName="password"
+        class="form-control"
+        required
+      />
+    </div>
+    <button class="btn btn-primary" (click)="onLogin()">Login</button>
+  </form>
+</div>

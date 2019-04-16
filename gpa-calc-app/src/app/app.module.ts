@@ -1,6 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { CustomMaterialModule } from "./material.module";
 
 import { CommonModule } from "@angular/common";
 import { AppRoutingModule } from "./app-routing.module";
@@ -27,7 +28,8 @@ import { CalculatorPageComponent } from "./calculator-page/calculator-page.compo
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CustomMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

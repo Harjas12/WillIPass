@@ -1,13 +1,15 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { HttpHeaders } from "@angular/common/http";
-import { Router } from "@angular/router"
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root"
 })
 export class AuthHandlerService {
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+  ) {}
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -24,8 +26,14 @@ export class AuthHandlerService {
       )
       .subscribe(
         data => {
+          //set local cookie
           console.log("success", data);
-          localStorage.setItem("id_token", res.token);
+          let obj = JSON.stringify(data);
+          let jwtVal = JSON.parse(obj).token;
+          localStorage.setItem("token", jwtVal);
+
+          //Change page
+          this.router.navigate(["/calc"]);
         },
         err => {
           console.log("error", err);
@@ -33,6 +41,14 @@ export class AuthHandlerService {
       );
   }
 
+  authToken() {
+    let data = JSON.parse(localStorage.getItem("token"));
+    if (data === null) {
+      return null;
+    }
+    return data.token;
+  }
+  
   create(input) {
     const req = this.http
     .post (

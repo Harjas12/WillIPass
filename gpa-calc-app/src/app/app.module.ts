@@ -7,24 +7,27 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from "@angular/common/http";
 
+//Pages
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from "./login/login.component";
 import { HomeComponent } from "./home/home.component";
+import { CalculatorPageComponent } from "./calculator-page/calculator-page.component";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    CalculatorPageComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     CommonModule,
     ReactiveFormsModule,
-    FormsModule,
     HttpClientModule
   ],
   providers: [],

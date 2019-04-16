@@ -1,7 +1,12 @@
 <div class="container-fluid">
   <form [formGroup]="newLoginForm">
+    <div *ngIf="errMsg">
+      <p>Invalid Username/Password. Please Try Again</p>
+    </div>
+
     <div>
-      <label>Username</label>
+      <label><strong>Username</strong></label>
+      <br />
       <input
         type="text"
         formControlName="username"
@@ -10,7 +15,8 @@
       />
     </div>
     <div>
-      <label>Password</label>
+      <label><strong>Password</strong></label>
+      <br />
       <input
         type="text"
         formControlName="password"

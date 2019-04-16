@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 import { template } from '@angular/core/src/render3/instructions';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { AuthHandlerService } from "../auth-handler.service";
 
 @Component({
   selector: 'app-register',
@@ -11,17 +12,17 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   newRegForm: FormGroup;
   title = 'Registration Page';
-  firstName: string = "";
-  lastName: string = "";
-  userName: string = "";
-  passWord: string = "";
+  username: string = "";
+  password: string = "";
+  firstname: string = "";
+  lastname: string = "";
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private registerService: AuthHandlerService) {
     this.newRegForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      userName: ['', Validators.required],
-      passWord: ['', Validators.required]
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required]
     });
   }
 
@@ -29,14 +30,11 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegister() {
-    this.firstName = this.newRegForm.get("firstName").value;
-    this.lastName = this.newRegForm.get("lastName").value;
-    this.userName = this.newRegForm.get("userName").value;
-    this.passWord = this.newRegForm.get("passWord").value;
-    console.log(this.firstName)
-    console.log(this.lastName)
-    console.log(this.userName)
-    console.log(this.passWord)
+    
+    const formObj = this.newRegForm.getRawValue();
+    const serializedform = JSON.stringify(formObj);
+    this.registerService.create(serializedform);
+    console.log(serializedform);
   }
 
 }

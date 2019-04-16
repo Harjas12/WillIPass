@@ -59,15 +59,17 @@ router.post('/grades', checkAuth, async (req, res) => {
 router.post('/create', async (req, res) => {
 	let username = req.body.username;
 	let password = req.body.password;
-	if(!username || !password) {
+	let firstName = req.body.firsname;
+	let lastName = req.body.lastname;
+	if(!username || !password || !firstName || !lastName) {
 		res.sendStatus(400);
 		return;
 	}
 	let salt = await encrypter.genSalt();
 	let hash = await encrypter.hash(password, salt);
 	try {
-		let results = await dbConn.query("INSERT INTO account (username, password, salt) VALUES ($1, $2, $3)",
-		[username, hash, salt]);
+		let results = await dbConn.query("INSERT INTO account (username, password, salt, firstname, lastname) VALUES ($1, $2, $3, $4, $5)",
+		[username, hash, salt, firstName, lastname]);
 		res.sendStatus(201);
 	} catch(error) {
 		res.sendStatus(400);
@@ -82,7 +84,7 @@ router.post('/login', async (req, res) => {
 		return;
 	}
 	try {
-		let queryRes = await dbConn.query("SELECT password, salt, user_id FROM account WHERE username = $1",
+		let queryRes = await dbConn.query("SELECT password, salt, user_id, firstname, lastname FROM account WHERE username = $1",
 		[username]);
 		if(queryRes.rowCount != 1) {
 			res.sendStatus(401);
@@ -92,7 +94,7 @@ router.post('/login', async (req, res) => {
 		let recievedHash = await encrypter.hash(password, authInfo.salt);
 		if(recievedHash == authInfo.password) {
 			let token = jwt.sign({id: authInfo.user_id}, process.env.SECRET);
-			res.send({auth: true, token: token});
+			res.send({auth: true, token: token, firstName: authInfo.firsname, lastname: authInfo.lastname});
 		} else {
 			res.sendStatus(401);
 		}

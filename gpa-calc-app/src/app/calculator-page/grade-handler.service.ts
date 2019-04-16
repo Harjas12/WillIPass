@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { AuthHandlerService } from "../auth-handler.service";
 import { Router } from "@angular/router";
 
+
 @Injectable({
   providedIn: "root"
 })
@@ -29,27 +30,13 @@ export class GradeHandlerService {
         input,
         {headers: this.gradeHeader}
         // this.httpOptions
-      )
-      .subscribe(
-        data => {
-          console.log("success", data);
-        },
-        err => {
-          console.log("error", err);
-        }
       );
+    return req;
   }
 
   getGrades() {
     const req = this.http
-      .get("https://willipass.herokuapp.com/api/grades", {headers: this.gradeHeader})
-      .subscribe(
-        data => {
-          console.log("success", data);
-        },
-        err => {
-          console.log("error", err);
-        }
-      );
+      .get("https://willipass.herokuapp.com/api/grades", {headers: this.gradeHeader});
+    return req;
   }
 }

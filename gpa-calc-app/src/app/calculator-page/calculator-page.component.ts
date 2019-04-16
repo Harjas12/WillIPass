@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ErrMsgService } from "../err-msg.service";
 import { GradeHandlerService } from "./grade-handler.service";
+import { catchError } from 'rxjs/operators';
+
 
 @Component({
   selector: "app-calculator-page",
@@ -86,11 +88,22 @@ export class CalculatorPageComponent implements OnInit {
       grades: classes
     });
     console.log(data);
-    this.grader.sendGrades(data);
+    this.grader.sendGrades(data).pipe(
+      catchError((err, caught) => {
+        alert("save failed");
+        return [];
+      })
+    ).subscribe();
   }
 
   getGrades() {
-    const data = this.grader.getGrades();
-    console.log(data);
+    this.grader.getGrades().pipe(
+      catchError((err, caught) => {
+        alert("failed to load grades");
+        return [];
+      })
+    ).subscribe(grades => {
+      console.log(grades);
+    });
   }
 }

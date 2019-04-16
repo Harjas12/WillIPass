@@ -1,0 +1,22 @@
+<h2>{{title}}</h2>
+<form [formGroup]="newRegForm">
+    <div class="form-group">
+      <br for="username">Username: <br/>
+      <input type="text" formControlName="username" class="form-control">
+    </div>
+    <div class="form-group">
+      <br for="password">Password: <br/>
+      <input type="text" formControlName="password" class="form-control">
+    </div>
+    <div class="form-group">
+      <br for="firstname">First Name: <br/>
+      <input type="text" formControlName="firstname" class="form-control">
+    </div>
+    <div class="form-group">
+      <br for="lastname">Last Name: <br/>
+      <input type="text" formControlName="lastname" class="form-control">
+    </div>
+    <div class="form-group">
+      <button (click)="onRegister()" type="button">Register</button>
+    </div>
+</form>

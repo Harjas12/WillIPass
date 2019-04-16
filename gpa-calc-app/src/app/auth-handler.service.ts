@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { HttpHeaders } from "@angular/common/http";
+import { Router } from "@angular/router"
 
 @Injectable({
   providedIn: "root"
 })
 export class AuthHandlerService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -17,7 +18,7 @@ export class AuthHandlerService {
   login(input) {
     const req = this.http
       .post(
-        "https://willipass.herokuapp.com/api/login",
+        "http://willipass.herokuapp.com/api/login",
         input,
         this.httpOptions
       )
@@ -31,4 +32,24 @@ export class AuthHandlerService {
         }
       );
   }
+
+  create(input) {
+    const req = this.http
+    .post (
+      "http://willipass.herokuapp.com/api/create",
+      input,
+      this.httpOptions
+    )
+    .subscribe(
+      data => {
+        console.log("success", data);
+        this.router.navigate(["/login"])
+      },
+      err => {
+        console.log("error", err);
+        alert("Username is already taken, please try again.");
+      }
+    );
+  }
+
 }

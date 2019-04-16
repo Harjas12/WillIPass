@@ -1,10 +1,48 @@
+<h1>
+  GPA: {{gpa}}
+</h1>
 <div id="calc">
   <table>
     <tr *ngFor="let class of classesArray; let i = index">
-      <td><input type="text" [(ngModel)]="class.grade"> <input type="text" [(ngModel)]="class.name"> <button (click)="deleteClass(i)">Delete</button></td>
+      <td>
+        <select [(ngModel)]="class.grade">
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="F">F</option>
+        </select>
+        <input type="number" [(ngModel)]="class.credits">
+        <input type="text" [(ngModel)]="class.name"> 
+        <button (click)="deleteClass(i)">Delete</button>
+      </td>
     </tr>
     <tr>
-      <td><input type="text" [(ngModel)]="newClassGrade"> <input type="text" [(ngModel)]="newClassName"><button (click)="addNewClass()">Add</button></td>
+      <td>
+        <select [(ngModel)]="newClassGrade">
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="F">F</option>
+        </select>
+        <input type="number" [(ngModel)]="newClassCredits">
+        <input type="text" [(ngModel)]="newClassName"><button (click)="addNewClass()">Add</button>
+      </td>
     </tr>
   </table>
 </div>

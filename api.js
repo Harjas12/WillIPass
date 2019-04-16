@@ -51,7 +51,7 @@ router.post('/grades', checkAuth, async (req, res) => {
 	}
 	try {
 		await dbConn.query("UPDATE account SET classes = $1 WHERE user_id = $2", [grades, id]);
-		res.sendStatus(200);
+		res.sendStatus(204);
 	} catch(error) {
 		res.sendStatus(500);
 	}
@@ -72,7 +72,7 @@ router.post('/create', async (req, res) => {
 	try {
 		let results = await dbConn.query("INSERT INTO account (username, password, salt, firstname, lastname) VALUES ($1, $2, $3, $4, $5)",
 		[username, hash, salt, firstName, lastName]);
-		res.sendStatus(201);
+		res.sendStatus(204);
 	} catch(error) {
 		res.sendStatus(400);
 	}

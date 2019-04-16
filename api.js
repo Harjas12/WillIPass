@@ -36,7 +36,9 @@ router.get('/grades', checkAuth, async (req, res) => {
 	let id = req.user_id;
 	try {
 		let results = await dbConn.query("SELECT classes FROM account WHERE user_id = $1", [id]);
-		res.send(results.rows);
+		let response = {classes: []};
+		if(results.rowCount > 0) response = results.rows;
+		res.send(response);
 	} catch(error) {
 		res.sendStatus(400);
 	}

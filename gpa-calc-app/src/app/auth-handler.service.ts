@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { ErrMsgService } from "./err-msg.service";
 
@@ -36,14 +35,22 @@ export class AuthHandlerService {
 
           //Change page
           this.router.navigate(["/calc"]);
-          this.errMsg.setLoginStatus(false);
+          // this.errMsg.setLoginStatus(false);
         },
         err => {
           console.log("error", err);
 
           //Display Error Message
-          this.errMsg.setLoginStatus(true);
+          // this.errMsg.setLoginStatus(true);
         }
       );
+  }
+
+  get authToken() {
+    let data = JSON.parse(localStorage.getItem("sessionInfo"));
+    if (data === null) {
+      return null;
+    }
+    return data.token;
   }
 }

@@ -1,48 +1,55 @@
-<h1>
-  GPA: {{gpa}}
-</h1>
+<h1>GPA: {{ gpa }}</h1>
 <div id="calc">
   <table>
     <tr *ngFor="let class of classesArray; let i = index">
       <td>
         <select [(ngModel)]="class.grade">
-            <option value="A">A</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B">B</option>
-            <option value="B-">B-</option>
-            <option value="C+">C+</option>
-            <option value="C">C</option>
-            <option value="C-">C-</option>
-            <option value="D+">D+</option>
-            <option value="D">D</option>
-            <option value="D-">D-</option>
-            <option value="F">F</option>
+          <option value="A">A</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B">B</option>
+          <option value="B-">B-</option>
+          <option value="C+">C+</option>
+          <option value="C">C</option>
+          <option value="C-">C-</option>
+          <option value="D+">D+</option>
+          <option value="D">D</option>
+          <option value="D-">D-</option>
+          <option value="F">F</option>
         </select>
-        <input type="number" [(ngModel)]="class.credits">
-        <input type="text" [(ngModel)]="class.name"> 
+        <input type="number" [(ngModel)]="class.credits" />
+        <input type="text" [(ngModel)]="class.name" />
         <button (click)="deleteClass(i)">Delete</button>
       </td>
     </tr>
     <tr>
       <td>
         <select [(ngModel)]="newClassGrade">
-            <option value="A">A</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B">B</option>
-            <option value="B-">B-</option>
-            <option value="C+">C+</option>
-            <option value="C">C</option>
-            <option value="C-">C-</option>
-            <option value="D+">D+</option>
-            <option value="D">D</option>
-            <option value="D-">D-</option>
-            <option value="F">F</option>
+          <option value="A">A</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B">B</option>
+          <option value="B-">B-</option>
+          <option value="C+">C+</option>
+          <option value="C">C</option>
+          <option value="C-">C-</option>
+          <option value="D+">D+</option>
+          <option value="D">D</option>
+          <option value="D-">D-</option>
+          <option value="F">F</option>
         </select>
-        <input type="number" [(ngModel)]="newClassCredits">
-        <input type="text" [(ngModel)]="newClassName"><button (click)="addNewClass()">Add</button>
+        <input type="number" [(ngModel)]="newClassCredits" />
+        <input type="text" [(ngModel)]="newClassName" /><button
+          (click)="addNewClass()"
+        >
+          Add
+        </button>
       </td>
     </tr>
   </table>
 </div>
+<div>
+    <button type="button" (click)="recomputeGPA()">Comput GPA</button>
+    <button type="button" (click)="saveGrades()">Save Grades</button>
+</div>
+

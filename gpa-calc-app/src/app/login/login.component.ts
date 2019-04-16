@@ -27,6 +27,9 @@ export class LoginComponent implements OnInit {
     const formObj = this.newLoginForm.getRawValue();
     const serializedForm = JSON.stringify(formObj);
     this.loginService.login(serializedForm);
+    console.log(serializedForm);
+
+    this.errHandler.setLoginStatus();
     this.errMsg = this.errHandler.getLoginStatus();
   }
 

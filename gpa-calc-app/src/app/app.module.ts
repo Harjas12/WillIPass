@@ -9,6 +9,8 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
 
+import { NgCircleProgressModule } from 'ng-circle-progress';
+
 //Pages
 import { RegisterComponent } from "./register/register.component";
 import { LoginComponent } from "./login/login.component";
@@ -31,7 +33,8 @@ import { CalculatorPageComponent } from "./calculator-page/calculator-page.compo
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CustomMaterialModule
+    CustomMaterialModule,
+    NgCircleProgressModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -34,7 +34,7 @@ import { MaterialModule } from "./material";
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgCircleProgressModule.forRoot()
+    NgCircleProgressModule.forRoot(),
     BrowserAnimationsModule,
     MaterialModule,
     CustomMaterialModule

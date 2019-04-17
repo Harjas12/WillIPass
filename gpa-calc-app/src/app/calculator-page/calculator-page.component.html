@@ -1,4 +1,4 @@
-<h1>GPA: {{ gpa }}</h1>
+<h1>GPA: {{ computeGPA(classesArray) }}</h1>
 <div id="calc">
   <table>
     <tr *ngFor="let class of classesArray; let i = index">
@@ -49,6 +49,8 @@
   </table>
 </div>
 <div>
-  <button type="button" (click)="recomputeGPA()">Compute GPA</button>
   <button type="button" (click)="saveGrades()">Save Grades</button>
+</div>
+<div>
+  <button type="button" (click)="logout()">Logout</button>
 </div>

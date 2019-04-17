@@ -1,6 +1,8 @@
 import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { CustomMaterialModule } from "./material.module";
 
 import { CommonModule } from "@angular/common";
 import { AppRoutingModule } from "./app-routing.module";
@@ -25,6 +27,7 @@ import { MaterialModule } from "./material"
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     CommonModule,
@@ -32,6 +35,8 @@ import { MaterialModule } from "./material"
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule
+    CustomMaterialModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

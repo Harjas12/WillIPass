@@ -1,12 +1,11 @@
 .loginForm {
+  max-width: 400px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  width: 0 80%;
-  margin-left: auto;
-  margin-right: auto;
+  flex-direction: column;
+  margin: 0 auto;
 }
 
-#input-field {
-  align-items: center;
+.content {
+  display: inline-block;
 }

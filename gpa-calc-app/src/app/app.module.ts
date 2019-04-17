@@ -9,6 +9,8 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
 
+import { NgCircleProgressModule } from 'ng-circle-progress';
+
 //Pages
 import { RegisterComponent } from "./register/register.component";
 import { LoginComponent } from "./login/login.component";
@@ -32,6 +34,7 @@ import { MaterialModule } from "./material";
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgCircleProgressModule.forRoot()
     BrowserAnimationsModule,
     MaterialModule,
     CustomMaterialModule

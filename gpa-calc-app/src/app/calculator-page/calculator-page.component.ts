@@ -3,11 +3,29 @@ import { Router } from "@angular/router";
 import { ErrMsgService } from "../err-msg.service";
 import { GradeHandlerService } from "./grade-handler.service";
 import { catchError } from "rxjs/operators";
+import { trigger, transition, style, animate, query, stagger } from '@angular/animations';
 
 @Component({
   selector: "app-calculator-page",
   templateUrl: "./calculator-page.component.html",
-  styleUrls: ["./calculator-page.component.css"]
+  styleUrls: ["./calculator-page.component.css"],
+  animations: [
+    trigger('items', [
+      transition(':enter', [
+        style({ transform: 'scale(0.5)', opacity: 0 }),  // initial
+        animate('0.5s cubic-bezier(.8, -0.6, 0.2, 1.5)', 
+          style({ transform: 'scale(1)', opacity: 1 }))  // final
+      ]),
+      transition(':leave', [
+        style({ transform: 'scale(1)', opacity: 1, height: '*' }),
+        animate('0.5s cubic-bezier(.8, -0.6, 0.2, 1.5)', 
+         style({ 
+           transform: 'scale(0.5)', opacity: 0, 
+           height: '0px', margin: '0px' 
+         })) 
+      ])
+    ])
+  ]
 })
 export class CalculatorPageComponent implements OnInit {
   classesArray: Array<any> = [];
@@ -39,6 +57,9 @@ export class CalculatorPageComponent implements OnInit {
   addNewClass() {
     console.log(this.newClassName);
     console.log(this.newClassGrade);
+    if(this.classesArray == undefined) {
+      this.classesArray = [];
+    }
     this.classesArray.push({
       name: this.newClassName,
       grade: this.newClassGrade,
@@ -55,6 +76,9 @@ export class CalculatorPageComponent implements OnInit {
   }
 
   computeGPA(grades) {
+    if(grades == undefined) {
+      return 4.0;
+    }
     let totalQualityPoints = 0;
     let totalQualityPointsEarned = 0;
     for (let i = 0; i < grades.length; i++) {
@@ -67,6 +91,11 @@ export class CalculatorPageComponent implements OnInit {
     } else {
       return 4.0;
     }
+  }
+
+  computeDisplayGPA(grades) {
+    const gpa = this.computeGPA(grades);
+    return Math.round(gpa * 100) / 100;
   }
 
   getGradeWeight(grade: string) {

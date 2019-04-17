@@ -95,7 +95,7 @@ export class CalculatorPageComponent implements OnInit {
 
   computeDisplayGPA(grades) {
     const gpa = this.computeGPA(grades);
-    return Math.round(gpa * 100) / 100;
+    return (Math.round(gpa * 100) / 100).toFixed(2);
   }
 
   getGradeWeight(grade: string) {

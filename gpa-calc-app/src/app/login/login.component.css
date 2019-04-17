@@ -1,6 +1,12 @@
 .loginForm {
-  height: auto;
-  width: 50%;
-  margin-left: 25%;
-  margin-right: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 0 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#input-field {
+  align-items: center;
 }

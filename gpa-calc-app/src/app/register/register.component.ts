@@ -3,6 +3,16 @@ import { Router } from '@angular/router'
 import { template } from '@angular/core/src/render3/instructions';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthHandlerService } from "../auth-handler.service";
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {NgModule} from "@angular/core"
+
+
+@NgModule({
+  imports: [MatButtonModule, MatCheckboxModule],
+  exports: [MatButtonModule, MatCheckboxModule],
+})
+export class MyOwnCustomMaterialModule { }
+
 
 @Component({
   selector: 'app-register',

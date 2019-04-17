@@ -14,8 +14,10 @@ import { RegisterComponent } from "./register/register.component";
 import { LoginComponent } from "./login/login.component";
 import { HomeComponent } from "./home/home.component";
 import { CalculatorPageComponent } from "./calculator-page/calculator-page.component";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from "./material"
+import { MaterialModule } from "./material";
+import { MatInputModule } from '@angular/material/input';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -34,9 +36,11 @@ import { MaterialModule } from "./material"
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
-    CustomMaterialModule
-
+    MaterialModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,8 +1,7 @@
-<link
-  href="//fonts.googleapis.com/icon?family=Material+Icons"
-  rel="stylesheet"
-/>
-<div style="text-align:center">
-  <h1>{{ title }}</h1>
-</div>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span id="homeLink" [routerLink]="['']">{{ title }}</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
 <router-outlet></router-outlet>

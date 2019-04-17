@@ -22,6 +22,7 @@
 ></circle-progress>
 <div class="centered-block">
   <mat-card id="calc">
+      <button (click)="saveGrades()" mat-raised-button color="primary">Save</button>
     <div>
       <span @items *ngFor="let class of classesArray; let i = index">
             <mat-form-field>
@@ -49,7 +50,6 @@
         </span>
     </div>
   </mat-card>
-  <br>
   <mat-card>
           <mat-form-field>
             <mat-select [(ngModel)]="newClassGrade">
@@ -75,10 +75,4 @@
           </mat-form-field>
           <button mat-raised-button (click)="addNewClass()" color="primary">Add</button>
   </mat-card>
-</div>
-<div>
-  <button type="button" (click)="saveGrades()">Save Grades</button>
-</div>
-<div>
-  <button type="button" (click)="logout()">Logout</button>
 </div>

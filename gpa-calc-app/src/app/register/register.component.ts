@@ -27,10 +27,10 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   onRegister() {
-    
     const formObj = this.newRegForm.getRawValue();
     const serializedform = JSON.stringify(formObj);
     this.registerService.create(serializedform);

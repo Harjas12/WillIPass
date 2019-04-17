@@ -1,22 +1,30 @@
-<h2>{{title}}</h2>
+<div class="popup">
+  <div class="wrapper">
+      <div class="myimg">
+          <img src="https://lh3.googleusercontent.com/AlkuhfPcH6oRMXa9G8Sx_1n6cinhTgDWRzZpdKBTo5lrdkBbO821TDrfTYdXja4YJWiL6pU=s146" alt="purdue">
+      </div>
+      <h2>{{title}}</h2>
 <form [formGroup]="newRegForm">
     <div class="form-group">
-      <br for="username">Username: <br/>
-      <input type="text" formControlName="username" class="form-control">
+      <br for="username"><h3 class="h3tag">Username:</h3> <br/>
+      <input type="text" formControlName="username" class="form-control" id="txtComputer">
     </div>
     <div class="form-group">
-      <br for="password">Password: <br/>
-      <input type="text" formControlName="password" class="form-control">
+      <br for="password"><h3 class="h3tag">Password:</h3><br/>
+      <input type="password" formControlName="password" class="form-control" id="txtComputer">
     </div>
     <div class="form-group">
-      <br for="firstname">First Name: <br/>
+      <br for="firstname"><h3 class="h3tag">First Name:</h3><br/>
       <input type="text" formControlName="firstname" class="form-control">
     </div>
     <div class="form-group">
-      <br for="lastname">Last Name: <br/>
+      <br for="lastname"><h3 class="h3tag">Last Name:</h3><br/>
       <input type="text" formControlName="lastname" class="form-control">
     </div>
     <div class="form-group">
-      <button type="submit" (click)="onRegister()" type="button" [disabled]="newRegForm.invalid">Register</button>
+      <br><br/>
+      <button  mat-raised-button color="primary" type="submit" (click)="onRegister()" type="button" [disabled]="newRegForm.invalid">Register</button>
     </div>
 </form>
+  </div>
+  </div>

@@ -1,0 +1,14 @@
+mat-form-field {
+  padding: 10px;
+}
+
+mat-card {
+  margin: 15px;
+}
+
+.centered-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column-reverse;
+}

@@ -1,0 +1,17 @@
+.homePage {
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.homePage.button {
+  border-radius: 8px;
+  transition-duration: 0.1s;
+  opacity: 1;
+}
+
+.homePage.button:hover {
+  opacity: 0.8;
+}

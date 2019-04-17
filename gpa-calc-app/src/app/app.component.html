@@ -1,0 +1,8 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span id="homeLink" [routerLink]="['']">{{ title }}</span>
+    <button mat-button (click)="logout()">Logout</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

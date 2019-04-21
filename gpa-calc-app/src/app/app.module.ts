@@ -43,7 +43,7 @@ import {MatCardModule} from '@angular/material/card';
     MatInputModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatCardModule
+    MatCardModule,
     CustomMaterialModule
   ],
   providers: [],

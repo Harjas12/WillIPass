@@ -11,4 +11,5 @@ mat-card {
   justify-content: space-between;
   align-items: center;
   flex-direction: column-reverse;
+  margin-top: 100px;
 }

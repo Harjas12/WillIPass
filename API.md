@@ -5,7 +5,7 @@
 4. Will return a 201 if user was added succesfully, else will return a 401.
 5. 401 will occur if username is already taken
 
-# Logging IN
+# Login
 1. Send POST request to '/api/login'
 2. Ensure that the content type header is set to 'application/json'
 3. In the body have json which includes fields for username and password

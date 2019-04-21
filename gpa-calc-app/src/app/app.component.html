@@ -1,0 +1,9 @@
+<mat-toolbar id="navBar" color="primary">
+  <mat-toolbar-row>
+    <span id="homeLink" [routerLink]="['']">{{ title }}</span>
+    <span class="fill-space"></span>
+    <button  mat-stroked-button id="logout-button"(click)="logout()">Logout</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<router-outlet class="pages"></router-outlet>

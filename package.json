@@ -14,7 +14,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm --prefix gpa-calc-app install && cd gpa-calc-app && ng build --prod && cd .. && node server.js"
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC"

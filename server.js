@@ -7,7 +7,7 @@ const app = express();
 // app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.use('/', express.static('gpa-calc-app/dist/gpa-calc-app'));
+app.use('/', express.static('dist/gpa-calc-app'));
 
 app.use((req, res, next) => {
 	res.header("Access-Control-Allow-Origin", "*");

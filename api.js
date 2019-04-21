@@ -22,9 +22,11 @@ function checkAuth(req, res, next) {
 		return;
 	}
 	token = token.substring(7);
+	console.log("token recieved: " + token);
 	try {
 		let jwtToken = jwt.verify(token, process.env.SECRET);
 		req.user_id = jwtToken.id;
+		console.log("user id based on token: " + req.user_id);
 		next();
 	} catch(error) {
 		res.sendStatus(401);

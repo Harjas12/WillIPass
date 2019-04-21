@@ -15,15 +15,18 @@ const dbConn = new pg.Pool({
 });
 
 function checkAuth(req, res, next) {
+	console.log(req.headers);
 	let token = req.headers['authorization'];
 	if(!token) {
 		res.status(401).send({ auth: false, message: 'No token provided.' });
 		return;
 	}
 	token = token.substring(7);
+	console.log("token recieved: " + token);
 	try {
 		let jwtToken = jwt.verify(token, process.env.SECRET);
 		req.user_id = jwtToken.id;
+		console.log("user id based on token: " + req.user_id);
 		next();
 	} catch(error) {
 		res.sendStatus(401);
@@ -35,7 +38,9 @@ router.get('/grades', checkAuth, async (req, res) => {
 	let id = req.user_id;
 	try {
 		let results = await dbConn.query("SELECT classes FROM account WHERE user_id = $1", [id]);
-		res.send(results.rows);
+		let response = {classes: []};
+		if(results.rowCount > 0) response = results.rows[0];
+		res.send(response);
 	} catch(error) {
 		res.sendStatus(400);
 	}
@@ -50,7 +55,7 @@ router.post('/grades', checkAuth, async (req, res) => {
 	}
 	try {
 		await dbConn.query("UPDATE account SET classes = $1 WHERE user_id = $2", [grades, id]);
-		res.sendStatus(200);
+		res.sendStatus(204);
 	} catch(error) {
 		res.sendStatus(500);
 	}
@@ -71,7 +76,7 @@ router.post('/create', async (req, res) => {
 	try {
 		let results = await dbConn.query("INSERT INTO account (username, password, salt, firstname, lastname) VALUES ($1, $2, $3, $4, $5)",
 		[username, hash, salt, firstName, lastName]);
-		res.sendStatus(201);
+		res.sendStatus(204);
 	} catch(error) {
 		res.sendStatus(400);
 	}

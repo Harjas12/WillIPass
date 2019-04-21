@@ -9,6 +9,8 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
 
+import { NgCircleProgressModule } from 'ng-circle-progress';
+
 //Pages
 import { RegisterComponent } from "./register/register.component";
 import { LoginComponent } from "./login/login.component";
@@ -35,12 +37,14 @@ import {MatCardModule} from '@angular/material/card';
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgCircleProgressModule.forRoot(),
     BrowserAnimationsModule,
     MaterialModule,
     MatInputModule,
     MatButtonModule,
     MatCheckboxModule,
     MatCardModule
+    CustomMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,7 +9,9 @@ import {
   MatToolbarModule,
   MatMenuModule,
   MatIconModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatFormFieldModule,
+  MatSelectModule,
 } from "@angular/material";
 @NgModule({
   imports: [
@@ -22,7 +24,9 @@ import {
     MatTableModule,
     MatMenuModule,
     MatIconModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   exports: [
     CommonModule,
@@ -34,7 +38,9 @@ import {
     MatTableModule,
     MatMenuModule,
     MatIconModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatFormFieldModule,
+    MatSelectModule
   ]
 })
 export class CustomMaterialModule {}

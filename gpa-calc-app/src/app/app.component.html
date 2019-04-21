@@ -1,8 +1,8 @@
-<link
-  href="//fonts.googleapis.com/icon?family=Material+Icons"
-  rel="stylesheet"
-/>
-<div style="text-align:center">
-  <h1>{{ title }}</h1>
-</div>
-<router-outlet></router-outlet>
+<mat-toolbar id="navBar" color="primary">
+  <mat-toolbar-row>
+    <span id="homeLink" [routerLink]="['']">{{ title }}</span>
+    <button mat-button (click)="logout()">Logout</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<router-outlet class="pages"></router-outlet>

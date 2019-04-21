@@ -1,29 +1,42 @@
-<div class="container-fluid">
-  <form [formGroup]="newLoginForm">
-    <div *ngIf="errMsg">
-      <p>Invalid Username/Password. Please Try Again</p>
-    </div>
-
-    <div>
-      <label><strong>Username</strong></label>
-      <br />
-      <input
-        type="text"
-        formControlName="username"
-        class="form-control"
-        required
-      />
-    </div>
-    <div>
-      <label><strong>Password</strong></label>
-      <br />
-      <input
-        type="text"
-        formControlName="password"
-        class="form-control"
-        required
-      />
-    </div>
-    <button class="btn btn-primary" (click)="onLogin()">Login</button>
-  </form>
-</div>
+<mat-card class="loginForm">
+  <mat-card-header>
+    <mat-card-title><strong>Login</strong></mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="content">
+    <form [formGroup]="newLoginForm">
+      <table cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Username"
+                type="text"
+                formControlName="username"
+                class="form-control"
+                required
+              />
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Password"
+                type="text"
+                formControlName="password"
+                class="form-control"
+                required
+              />
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="login()" color="primary">Login</button>
+  </mat-card-actions>
+</mat-card>

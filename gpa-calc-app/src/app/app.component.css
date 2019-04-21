@@ -10,3 +10,11 @@
   z-index: 2;
   width: 100% !important;
 }
+
+.fill-space {
+  flex: 1 1 auto;
+}
+
+#logout-button {
+  z-index: 3;
+}

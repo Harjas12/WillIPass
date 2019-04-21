@@ -16,3 +16,14 @@
 .homePage.button:hover {
   opacity: 0.8;
 }
+
+.actionButtons {
+  padding-top: 10px;
+  display: inline-block;
+  text-align: center;
+}
+
+.actionButtons button {
+  width: 45%;
+  margin: 10px;
+}

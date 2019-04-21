@@ -8,7 +8,13 @@
         <tr>
           <td>
             <mat-form-field>
-              <input matInput placeholder="Username" type="text" formControlName="username" class="form-control" required
+              <input
+                matInput
+                placeholder="Username"
+                type="text"
+                formControlName="username"
+                class="form-control"
+                required
               />
             </mat-form-field>
           </td>
@@ -16,21 +22,42 @@
         <tr>
           <td>
             <mat-form-field>
-              <input matInput placeholder="Password" type="password" formControlName="password" class="form-control" required/>
+              <input
+                matInput
+                placeholder="Password"
+                type="password"
+                formControlName="password"
+                class="form-control"
+                required
+              />
             </mat-form-field>
           </td>
         </tr>
         <tr>
           <td>
             <mat-form-field>
-              <input matInput placeholder="First Name" type="text" formControlName="firstname" class="form-control" required/>
+              <input
+                matInput
+                placeholder="First Name"
+                type="text"
+                formControlName="firstname"
+                class="form-control"
+                required
+              />
             </mat-form-field>
           </td>
         </tr>
         <tr>
           <td>
             <mat-form-field>
-              <input matInput placeholder="Last Name" type="text" formControlName="lastname" class="form-control" required/>
+              <input
+                matInput
+                placeholder="Last Name"
+                type="text"
+                formControlName="lastname"
+                class="form-control"
+                required
+              />
             </mat-form-field>
           </td>
         </tr>
@@ -38,6 +65,18 @@
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button  mat-raised-button color="primary" type="submit" (click)="onRegister()" type="button" [disabled]="newRegForm.invalid">Register</button>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      (click)="onRegister()"
+      type="button"
+      [disabled]="newRegForm.invalid"
+    >
+      Register
+    </button>
+    <button mat-raised-button color="primary" [routerLink]="['/login']">
+      Login
+    </button>
   </mat-card-actions>
 </mat-card>

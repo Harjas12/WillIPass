@@ -17,7 +17,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "postinstall": "cd gpa-calc-app && ng build --prod"
+    "postinstall": "cd gpa-calc-app && npm install && ng build --prod"
   },
   "author": "",
   "license": "ISC"

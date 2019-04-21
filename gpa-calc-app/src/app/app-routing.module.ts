@@ -10,9 +10,10 @@ import { RegisterComponent } from "./register/register.component";
 // Routing
 const routes: Routes = [
   { path: "", component: HomeComponent, pathMatch: "full" },
-  { path: "login", component: LoginComponent },
-  { path: "calc", component: CalculatorPageComponent },
-  { path: "register", component: RegisterComponent }
+  { path: "login", component: LoginComponent, pathMatch: "full" },
+  { path: "calc", component: CalculatorPageComponent, pathMatch: "full" },
+  { path: "register", component: RegisterComponent, pathMatch: "full" },
+  { path: "**", component: HomeComponent}
 ];
 
 @NgModule({

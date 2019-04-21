@@ -17,6 +17,9 @@ import { LoginComponent } from "./login/login.component";
 import { HomeComponent } from "./home/home.component";
 import { CalculatorPageComponent } from "./calculator-page/calculator-page.component";
 import { MaterialModule } from "./material";
+import { MatInputModule } from '@angular/material/input';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,10 @@ import { MaterialModule } from "./material";
     NgCircleProgressModule.forRoot(),
     BrowserAnimationsModule,
     MaterialModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatCardModule
     CustomMaterialModule
   ],
   providers: [],

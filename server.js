@@ -9,6 +9,10 @@ app.use(bodyParser.json());
 
 app.use('/', express.static('dist/gpa-calc-app'));
 
+app.get('/*', (req, res) => {
+	res.sendFile('dist/gpa-calc-app/index.html')
+})
+
 app.use((req, res, next) => {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, authorization");

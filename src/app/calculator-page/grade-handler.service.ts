@@ -16,7 +16,7 @@ export class GradeHandlerService {
 
   sendGrades(input) {
     const req = this.http.post(
-      "https://willipass.herokuapp.com/api/grades",
+      "/api/grades",
       input,
       { headers: this.makeHeader }
     );
@@ -25,7 +25,7 @@ export class GradeHandlerService {
 
   getGrades() {
     const req = this.http
-      .get("https://willipass.herokuapp.com/api/grades", {
+      .get("/api/grades", {
         headers: this.makeHeader
       })
       .pipe(map(res => res["classes"]));

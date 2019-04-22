@@ -7,12 +7,6 @@ const app = express();
 // app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.use('/', express.static('dist/gpa-calc-app'));
-
-app.get('/*', (req, res) => {
-	res.sendFile('dist/gpa-calc-app/index.html')
-})
-
 app.use((req, res, next) => {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, authorization");
@@ -20,6 +14,12 @@ app.use((req, res, next) => {
 });
 
 app.use('/api', api);
+
+app.use('/', express.static('dist/gpa-calc-app'));
+
+app.get('/*', (req, res) => {
+	res.sendFile(__dirname +  '/dist/gpa-calc-app/index.html');
+})
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

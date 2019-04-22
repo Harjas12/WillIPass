@@ -20,7 +20,7 @@ export class AuthHandlerService {
   login(input) {
     const req = this.http
       .post(
-        "http://willipass.herokuapp.com/api/login",
+        "https://willipass.herokuapp.com/api/login",
         input,
         this.httpOptions
       )
